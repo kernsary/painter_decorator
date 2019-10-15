@@ -19,7 +19,7 @@ Decorator.prototype.canPaintRoom = function(room) {
 };
 
 Decorator.prototype.paintRoom = function (room) {
-  if(this.canPaintRoom){
+  if(this.canPaintRoom(room)){
     room.paint();
   };
 };
