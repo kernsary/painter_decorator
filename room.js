@@ -3,8 +3,8 @@ const Room = function(area){
   this.painted = false;
 };
 
-// Room.prototype.methodName = function () {
-
-// };
+Room.prototype.paint = function () {
+  this.painted = true;
+};
 
 module.exports = Room
