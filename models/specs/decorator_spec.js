@@ -28,7 +28,7 @@ describe("Decorator", function(){
   it("should be able to calculate total litres of paint in stock", function(){
     decorator.addPaintCan(paintCan1);
     decorator.addPaintCan(paintCan2);
-    const actual = decorator.totalPaintLitres();
+    const actual = decorator.totalPaintLitres;
     assert.strictEqual(actual, 11);
   });
 
@@ -64,6 +64,46 @@ describe("Decorator", function(){
     decorator.paintRoom(room);
     const actual = room.painted;
     assert.strictEqual(actual, false);
+  });
+
+  it("should decrease amount of paint in stock when painting a room", function(){
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    decorator.paintRoom(room);
+    const actual = decorator.totalPaintLitres;
+    assert.strictEqual(actual, 13);
+  });
+
+  it("should be able to remove empty paint cans from stock - paintCan1", function(){
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    paintCan1.empty();
+    decorator.removeEmptyPaintCans();
+    const actual = decorator.stock;
+    assert.deepStrictEqual(actual, [paintCan2]);
+  });
+
+  it("should be able to remove empty paint cans from stock - paintCan2", function(){
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    paintCan2.empty();
+    decorator.removeEmptyPaintCans();
+    const actual = decorator.stock;
+    assert.deepStrictEqual(actual, [paintCan1]);
+  });
+
+  it("should be able to remove empty paint cans from stock - both", function(){
+    decorator.addPaintCan(paintCan1);
+    decorator.addPaintCan(paintCan2);
+    paintCan2.empty();
+    paintCan1.empty();
+    decorator.removeEmptyPaintCans();
+    const actual = decorator.stock;
+    assert.deepStrictEqual(actual, []);
   });
 
 });
