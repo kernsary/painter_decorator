@@ -1,14 +1,22 @@
 {
   "name": "painter_decorator_lab",
   "version": "1.0.0",
-  "description": "",
   "main": "decorator.js",
   "scripts": {
-    "test": "mocha specs"
+    "test": "mocha models/specs"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^6.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kernsary/painter_decorator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kernsary/painter_decorator/issues"
+  },
+  "homepage": "https://github.com/kernsary/painter_decorator#readme",
+  "description": ""
 }
